@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="fakeApp" ng-cloak>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fake Section</title>
+        <link rel="icon" href="../../favicon.ico">
+        <!-- Bootstrap -->
+        <link href="../bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../CSS/cover.css" rel="stylesheet">
+    </head>
+    <body ng-controller="fakeController">
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="inner cover">
+                        <h3 class="masthead-brand">Fake Section</h3>
+                        <h1 class="cover-heading">What are you looking for?</h1>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="searchText" placeholder="Tacos, escuelas, putas... Lo que quieras papi">
+                        </div>
+                        <p class="lead">
+                            <a ng-click="search()" class="btn btn-lg btn-default">Search</a>
+                        </p>
+                    </div>
+                    <div class="table-responsive" ng-show="dataAvailable">          
+                        <table class="table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Colony</th>
+                                    <th>Street</th>
+                                    <th>Payment Type</th>
+                                    <th>Phones</th>
+                                    <th>State</th>
+                                    <th>City</th>
+                                    <th>Zip Code</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="result in searchResult">
+                                    <td>{{ result.bn}}</td>
+                                    <td>{{ result.colony}}</td>
+                                    <td>{{ result.fullstreet}}</td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="payment in result.paymenttype">
+                                                {{ payment.text}}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li ng-repeat="phone in result.phones">
+                                                {{ phone.number}}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>{{ result.statename}}</td>
+                                    <td>{{ result.physicalcity}}</td>
+                                    <td>{{ result.zip}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <p>Designed by the very best</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="../js/angular.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/fakeController.js"></script>
+    <link rel='stylesheet' href='../js/loading-bar.css' type='text/css' media='all' />
+    <script type='text/javascript' src='../js/loading-bar.js'></script>
+</html>
